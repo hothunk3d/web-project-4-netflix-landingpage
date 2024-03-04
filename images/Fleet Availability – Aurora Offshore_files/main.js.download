@@ -1,0 +1,491 @@
+ /*
+$('.hero').slick({
+  dots: true,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  fade: true,
+  pauseOnHover:false
+
+});
+
+$('.bh-tech-logos').slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  variableWidth: true,
+  autoplay: true,
+  autoplaySpeed: 1000
+});
+*/
+
+//WP Bootstrap nav Walker
+
+
+//side nav
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+
+
+(function($){
+    $(document).ready(function(){
+        $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+            event.preventDefault(); 
+            event.stopPropagation(); 
+            $(this).parent().siblings().removeClass('open');
+            $(this).parent().toggleClass('open');
+        });
+    }); 
+    })(jQuery);
+
+    // Mega menu
+
+    $(document).ready(function() {
+        // executes when HTML-Document is loaded and DOM is ready
+       
+       // breakpoint and up  
+       $(window).resize(function(){
+           if ($(window).width() >= 980){  
+       
+             // when you hover a toggle show its dropdown menu
+             $(".navbar .dropdown-toggle").hover(function () {
+                $(this).parent().toggleClass("show");
+                $(this).parent().find(".dropdown-menu").toggleClass("show"); 
+              });
+       
+               // hide the menu when the mouse leaves the dropdown
+             $( ".navbar .dropdown-menu" ).mouseleave(function() {
+               $(this).removeClass("show");  
+             });
+         
+               // do something here
+           }   
+       });  
+         
+         
+       
+       // document ready  
+       });
+
+
+       // Menu hover
+
+       $('body').on('mouseenter mouseleave', '.dropdown', function (e) {
+        var dropdown = $(e.target).closest('.dropdown');
+        var menu = $('.dropdown-menu', dropdown);
+        dropdown.addClass('show');
+        menu.addClass('show');
+        setTimeout(function () {
+            dropdown[dropdown.is(':hover') ? 'addClass' : 'removeClass']('show');
+            menu[dropdown.is(':hover') ? 'addClass' : 'removeClass']('show');
+        }, 300);
+    });
+
+//slick
+
+function initSlider(){
+  $('.bh-slider').slick({
+    dots: true,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear'
+  });
+}
+
+$(document).on('ready', function () {
+  initSlider();
+});
+
+
+/* navbar responsive */
+
+$('.navbar-collapse').on('shown.bs.collapse', function() {
+
+  $('.main-menu-con').css('background', '#172457'); 
+
+$('.navbar-brand img').css('filter', 'brightness(100)');
+
+$('.navbar-light .custom-toggler').css('background-color', '#172457');
+
+$('.navbar-light .custom-toggler').css('border-color', '#fff');
+
+$('.close-toggler').css('color', '#fff');
+
+$('.close-toggler img').css('filter', 'brightness(100)');
+
+
+
+});
+
+
+
+
+
+
+
+$('.navbar-collapse').on('hide.bs.collapse', function() {
+
+$('.main-menu-con').css('background', '#fff'); 
+
+$('.navbar-brand img').css('filter', 'none');
+
+$('.navbar-light .custom-toggler').css('background-color', '#fff');
+
+$('.navbar-light .custom-toggler').css('border-color', '#BBBBBB');				
+
+
+
+});
+
+$(document).ready(function () {
+
+
+  $(window).scroll(function () {
+
+
+
+      if ($(this).scrollTop() > 100) {
+
+
+
+          $('.scrollup').fadeIn();
+
+
+
+      } else {
+
+             $('.scrollup').fadeOut();
+
+         }
+
+
+  });
+
+
+
+  $('.scrollup').click(function () {
+
+
+      $("html, body").animate({
+
+
+          scrollTop: 0
+
+
+      }, 600);
+
+
+      return false;
+
+
+  });
+
+
+});
+
+
+//side nav
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+
+//extra
+
+/*!
+    * Start Bootstrap - Creative v6.0.4 (https://startbootstrap.com/theme/creative)
+    * Copyright 2013-2020 Start Bootstrap
+    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
+    */
+   (function($) {
+    "use strict"; // Start of use strict
+  
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: (target.offset().top - 72)
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+  
+    // Closes responsive menu when a scroll trigger link is clicked
+    $('.js-scroll-trigger').click(function() {
+      $('.navbar-collapse').collapse('hide');
+    });
+  
+    // Activate scrollspy to add active class to navbar items on scroll
+    $('body').scrollspy({ target: '#mainNav', offset: 50 });
+  
+    // Collapse Navbar
+    var navbarCollapse = function() {
+      if ($("#mainNav").offset().top > 100) {
+        $("#mainNav").addClass("navbar-scrolled");
+      } else {
+        $("#mainNav").removeClass("navbar-scrolled");
+      }
+    };
+
+
+    
+    // Collapse now if page is not at top
+    navbarCollapse();
+    // Collapse the navbar when page is scrolled
+    $(window).scroll(navbarCollapse);
+  
+    // Magnific popup calls
+    $('#portfolio').magnificPopup({
+      delegate: 'a',
+      type: 'image',
+      tLoading: 'Loading image #%curr%...',
+      mainClass: 'mfp-img-mobile',
+      gallery: {
+        enabled: true,
+        navigateByImgClick: true,
+        preload: [0, 1]
+      },
+      image: {
+        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+      }
+    });
+  
+  })(jQuery); // End of use strict
+  
+
+  $(document).ready(function() {
+    $(".carousel").carousel({
+        interval: 5000,
+        pause: "hover",
+    });
+});
+
+
+ //AOS.init();
+
+// var rellax = new Rellax('.rellax');
+
+// new WOW().init();
+
+ jQuery(document).ready(function($) {
+  $('.slider').slick({
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: true,
+    responsive: [{
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    },
+    {
+       breakpoint: 400,
+       settings: {
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 1
+       }
+    }]
+});
+});
+
+
+/*ajax*/
+
+(function($) {
+	$doc = $(document);
+
+	$doc.ready( function() {
+
+		/**
+		 * Retrieve posts
+		 */
+		function get_posts($params) {
+
+			$container = $('#container-async');
+			$content   = $container.find('.content');
+	        	$status    = $container.find('.status');
+
+			$status.text('Loading posts ...');
+
+			$.ajax({
+	            		url: bobz.ajax_url,
+	            		data: {
+	            			action: 'do_filter_posts',
+					nonce: bobz.nonce,
+					params: $params
+	            		},
+	            		type: 'post',
+	            		dataType: 'json',
+	            		success: function(data, textStatus, XMLHttpRequest) {
+	            	
+			            	if (data.status === 200) {
+			            		$content.html(data.content);
+			            	}
+			            	else if (data.status === 201) {
+			            		$content.html(data.message);	
+			            	}
+			            	else {
+			            		$status.html(data.message);
+			            	}
+			         },
+			         error: function(MLHttpRequest, textStatus, errorThrown) {
+
+					$status.html(textStatus);
+					
+					/*console.log(MLHttpRequest);
+					console.log(textStatus);
+					console.log(errorThrown);*/
+			         },
+				complete: function(data, textStatus) {
+					
+					msg = textStatus;
+
+	            	if (textStatus === 'success') {
+	            		msg = data.responseJSON.found;
+	            	}
+
+	            	$status.text('Posts found: ' + msg);
+	            	
+	            	/*console.log(data);
+	            	console.log(textStatus);*/
+	            }
+	        });
+		}
+
+		/**
+		 * Bind get_posts to tag cloud and navigation
+		 */
+		$('#container-async').on('click', 'a[data-filter], .pagination a', function(event) {
+			if(event.preventDefault) { event.preventDefault(); }
+
+			$this = $(this);
+
+			/**
+			 * Set filter active
+			 */
+			if ($this.data('filter')) {
+				$this.closest('ul').find('.active').removeClass('active');
+				$this.parent('li').addClass('active');
+				$page = $this.data('page');
+			}
+			else {
+				/**
+				 * Pagination
+				 */
+				$page = parseInt($this.attr('href').replace(/\D/g,''));
+				$this = $('.nav-filter .active a');
+			}
+			
+
+	        $params    = {
+	        	'page' : $page,
+	        	'tax'  : $this.data('filter'),
+	        	'term' : $this.data('term'),
+	        	'qty'  : $this.closest('#container-async').data('paged'),
+	        };
+
+	        // Run query
+	        get_posts($params);
+		});
+		
+		$('a[data-term="all-terms"]').trigger('click');
+	});
+
+})(jQuery);
+
+
+/**
+ * Scroll management
+ */
+ $(document).ready(function () {
+
+  // Define the menu we are working with
+  var menu = $('.navbar.navbar-light');
+
+  // Get the menus current offset
+  var origOffsetY = menu.offset().top;
+
+  /**
+   * scroll
+   * Perform our menu mod
+   */
+  function scroll() {
+
+      // Check the menus offset. 
+      if ($(window).scrollTop() >= origOffsetY) {
+
+          //If it is indeed beyond the offset, affix it to the top.
+          $(menu).addClass('navbar-fixed-top');
+
+      } else {
+
+          // Otherwise, un affix it.
+          $(menu).removeClass('navbar-fixed-top');
+
+      }
+  }
+
+  // Anytime the document is scrolled act on it
+  document.onscroll = scroll;
+
+});
+
+
+
+
+//scroll
+$(document).ready(function () {
+  $(window).scroll(function () {
+
+      if ($(this).scrollTop() > 100) {
+
+          $('.scrollup').fadeIn();
+
+      } else {
+
+          $('.scrollup').fadeOut();
+      }
+
+  });
+
+  $('.scrollup').click(function () {
+
+      $("html, body").animate({
+
+          scrollTop: 0
+
+      }, 600);
+
+      return false;
+
+  });
+
+});
